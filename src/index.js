@@ -2,6 +2,7 @@ import express from "express";
 import "dotenv/config";
 import cors from "cors";
 import morgan from "morgan";
+const conectDb = require("./database/db");
 
 console.log("Hello World BACK END 46i");
 
@@ -14,14 +15,23 @@ app.set("port", process.env.PORT || 5050);
 
 //inicializamos nuestro back end
 
-app
-  .listen(app.get("port"), () => {
+const initApp = async () => {
+  try {
+    await conectDb();
+    app.listen(app.get("port"), () => {
     console.log(`BackEnd46i listening to PORT: ${app.get("port")}`);
   })
   .on("error", (error) => {
     console.log("ERROR:", error);
     process.exit(1);
   });
+  } catch (error) {
+    console.log("ERROR:", error);
+    process.exit(1);
+  }
+};
+
+initApp();
 
 //MIDDLEWARES: config extras del backend antes de que se ejecuten las rutas
 
