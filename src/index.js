@@ -2,6 +2,7 @@ import express from "express";
 import "dotenv/config";
 import cors from "cors";
 import morgan from "morgan";
+import usuarios from "./routes/Usuarios.Routes";
 const conectDb = require("./database/db");
 
 console.log("Hello World BACK END 46i");
@@ -34,6 +35,10 @@ const initApp = async () => {
 initApp();
 
 //MIDDLEWARES: config extras del backend antes de que se ejecuten las rutas
+
+app.use("/api", usuarios);
+
+
 
 //1-middle nativos de express
 

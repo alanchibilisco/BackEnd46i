@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 const canchaSchema = new Schema({
     nombre: String,
     capacidad: Number,
-    direccion: String
+    direccion: String,
 }, {versionKey: false});
 
 
