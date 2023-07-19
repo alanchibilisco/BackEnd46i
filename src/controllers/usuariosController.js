@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const register = async (req, res) => {
   try {
     console.log(req.body)
-    console.log(req)
+    // console.log(req)
     const { nombre, apellido, email, password, telefono } = req.body;
     const hash = await bcrypt.hash(password, 10);
     const usuario = new Usuarios({
@@ -14,6 +14,7 @@ const register = async (req, res) => {
       password: hash,
       telefono,
     });
+    console.log(usuario, "usuario")
     await usuario.save();
     res.status(201).json(usuario);
   } catch (error) {

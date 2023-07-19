@@ -6,7 +6,7 @@ const usuarioModel = new Schema({
     apellido: String,
     email: String,
     password: String,
-    telefono: String,
+    telefono: Number,
     
 }, { versionKey: false });
 
