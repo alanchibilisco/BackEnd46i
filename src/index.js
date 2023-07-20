@@ -2,6 +2,7 @@ import express from "express";
 import "dotenv/config";
 import cors from "cors";
 import morgan from "morgan";
+import comprobacionJwt from "./middleware/comprobacionJwt";
 const conectDb = require("./database/db");
 
 console.log("Hello World BACK END 46i");
@@ -47,5 +48,5 @@ app.use(cors()); //permite recibir peticiones remotas
 
 app.use("/api", require("./routes/Rutes"));
 app.use('/api/users',require('./routes/Usuarios.Routes')); // importamos las rutas de usuarios
-
+app.use('/privado', comprobacionJwt, require('./routes/Admin')); // importamos las rutas de admin
 
